@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Homework 07_24</title>
+  <style>
+    body {
+      font-size: 20px;
+      font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+      margin: 40px 80px;
+      box-shadow: 0 0 72px 10px #ddd;
+    }
+    header {
+      height: 30px;
+      background-color: #ddd;
+      border-bottom: 2px solid #b8b8b8;
+    }
+    section {
+      background-image: url(resources/images/bg_tile.png);
+      background-size: 48px 48px;
+      min-height: 432px;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+    .icon {
+      height: 20px;
+      width: 20px;
+      margin: 2px 8px 2px 2px;
+      background-size: 20px 20px;
+      opacity: 0.8;
+      float: left;
+    }
+    .folder-icon {
+      background-image: url(resources/images/folder_icon.png)
+    }
+
+    .file-icon {
+      background-image: url(resources/images/file_icon.png);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h3 style="text-align: center; color: #555;">Folder name</h3>
+  </header>
+  <section>
+    <ul>
+      <li><div class="icon folder-icon"></div>lorem</li>
+      <li><div class="icon folder-icon"></div>ipsum
+        <ul>
+          <li><div class="icon file-icon"></div>dolor</li>
+          <li><div class="icon file-icon"></div>sit amet</li>
+        </ul>
+      </li>
+      <li><div class="icon folder-icon"></div>consectetur
+        <ul>
+          <li><div class="icon folder-icon"></div>adipiscing
+            <ul>
+              <li><div class="icon file-icon"></div>elit</li>
+              <li><div class="icon file-icon"></div>sed do</li>
+            </ul>
+          </li>
+          <li><div class="icon folder-icon"></div>eiusmod</li>
+          <li><div class="icon file-icon"></div>tempor</li>
+        </ul>
+      </li>
+      <li><div class="icon folder-icon"></div>incididunt</li>
+      <li><div class="icon folder-icon"></div>ut labore</li>
+      <li><div class="icon file-icon"></div>et dolore</li>
+      <li><div class="icon file-icon"></div>magna</li>
+      <li><div class="icon file-icon"></div>aliqua</li>
+    </ul>
+  </section>
+</body>
+</html>
