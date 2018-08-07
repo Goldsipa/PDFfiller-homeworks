@@ -54,7 +54,7 @@
     }
 
     function selectFile(event) {
-      
+
       folders = document.getElementsByClassName("folder");
       clearAll();
       event.currentTarget.classList.toggle("selected");
@@ -116,10 +116,14 @@
       node.addEventListener("click", selectFile);
       if (document.getElementsByClassName("selected")[0]) {
         document.getElementsByClassName("selected")[0].lastElementChild.appendChild(node);
+
+        if(document.getElementsByClassName("selected")[0].lastElementChild.classList.contains("hidden")){
+          document.getElementsByClassName("selected")[0].lastElementChild.classList.toggle("hidden");
+          document.getElementsByClassName("selected")[0].firstElementChild.classList.toggle("rotateIn");
+        }
       } else {
         document.getElementById("mainlist").appendChild(node);
       }
-
     }
 
     function removeElement() {
