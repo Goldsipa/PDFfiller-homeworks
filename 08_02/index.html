@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Homework 08_02</title>
+  <link rel="stylesheet" href="resources/css/main.css">
+</head>
+<body onclick="clearAll()">
+  <header>
+    <h3 style="text-align: center; color: #555;">Folder name</h3>
+  </header>
+  <section>
+    <ul>
+      <li class="file">
+        <img src="resources/images/arrow.png" alt="" class="icon" onclick="myFunction(event)">
+        <img src="resources/images/folder_icon.png" alt="" class="icon">
+        <span class="title">lorem</span>
+        <ul></ul>
+      </li>
+      <li class="file">
+        <img src="resources/images/arrow.png" alt="" class="icon rotateIn" onclick="myFunction(event)">
+        <img src="resources/images/folder_icon.png" alt="" class="icon">
+        <span class="title">lorem</span>
+        <ul>
+          <li class="file">
+            <img src="resources/images/arrow.png" alt="" class="icon" onclick="myFunction(event)">
+            <img src="resources/images/folder_icon.png" alt="" class="icon">
+            <span class="title">lorem</span>
+            <ul class="hidden">
+              <li class="file">
+                <img src="resources/images/file_icon.png" alt="" class="icon icon-file">
+                <span class="title">ipsum</span>
+              </li>
+            </ul>
+          </li>
+          <li class="file">
+            <img src="resources/images/file_icon.png" alt="" class="icon icon-file">
+            <span class="title">ipsum</span>
+          </li>
+        </ul>
+      </li>
+      <li class="file">
+        <img src="resources/images/arrow.png" alt="" class="icon" onclick="myFunction(event)">
+        <img src="resources/images/folder_icon.png" alt="" class="icon">
+        <span class="title">lorem</span>
+        <ul></ul>
+      </li>
+      <li class="file">
+        <img src="resources/images/file_icon.png" alt="" class="icon icon-file">
+        <span class="title">ipsum</span>     
+      </li>
+    </ul>
+  </section>
+
+  <script>
+
+    let files = document.getElementsByClassName("file");
+    for (let i = 0; i < files.length; i++) {
+      files[i].addEventListener("click", selectFile);
+    }
+
+    function selectFile(event) {
+      console.log(files);
+      files = document.getElementsByClassName("file");
+      clearAll();
+      event.currentTarget.classList.toggle("selected");
+      event.stopPropagation();
+    }
+    
+    function myFunction(event){
+      console.log(event.currentTarget.parentNode.lastElementChild);
+      event.currentTarget.parentNode.lastElementChild.classList.toggle("hidden");
+      event.currentTarget.classList.toggle("rotateIn");
+      event.stopPropagation();
+    }
+    function clearAll() {
+      if (!event.shiftKey) {
+        for (let i = 0; i < files.length; i++) {
+          files[i].className = files[i].className.replace(" selected", "");
+        }
+      }
+    }
+  </script>
+</body>
+</html>
