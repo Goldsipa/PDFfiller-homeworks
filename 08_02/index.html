@@ -7,80 +7,129 @@
   <title>Homework 08_02</title>
   <link rel="stylesheet" href="resources/css/main.css">
 </head>
-<body onclick="clearAll()">
+<body>
   <header>
     <h3 style="text-align: center; color: #555;">Folder name</h3>
   </header>
-  <section>
-    <ul>
-      <li class="file">
-        <img src="resources/images/arrow.png" alt="" class="icon" onclick="myFunction(event)">
+  <section onclick="clearAll()">
+    <ul id="mainlist">
+      <li class="folder">
+        <img src="resources/images/arrow.png" alt="" class="icon" onclick="toggleExpand(event)">
         <img src="resources/images/folder_icon.png" alt="" class="icon">
         <span class="title">lorem</span>
-        <ul></ul>
+        <ul class="hidden"></ul>
       </li>
-      <li class="file">
-        <img src="resources/images/arrow.png" alt="" class="icon rotateIn" onclick="myFunction(event)">
+      <li class="folder">
+        <img src="resources/images/arrow.png" alt="" class="icon rotateIn" onclick="toggleExpand(event)">
         <img src="resources/images/folder_icon.png" alt="" class="icon">
         <span class="title">lorem</span>
         <ul>
-          <li class="file">
-            <img src="resources/images/arrow.png" alt="" class="icon" onclick="myFunction(event)">
+          <li class="folder">
+            <img src="resources/images/arrow.png" alt="" class="icon" onclick="toggleExpand(event)">
             <img src="resources/images/folder_icon.png" alt="" class="icon">
             <span class="title">lorem</span>
-            <ul class="hidden">
-              <li class="file">
-                <img src="resources/images/file_icon.png" alt="" class="icon icon-file">
-                <span class="title">ipsum</span>
-              </li>
-            </ul>
-          </li>
-          <li class="file">
-            <img src="resources/images/file_icon.png" alt="" class="icon icon-file">
-            <span class="title">ipsum</span>
+            <ul class="hidden"></ul>
           </li>
         </ul>
       </li>
-      <li class="file">
-        <img src="resources/images/arrow.png" alt="" class="icon" onclick="myFunction(event)">
+      <li class="folder">
+        <img src="resources/images/arrow.png" alt="" class="icon" onclick="toggleExpand(event)">
         <img src="resources/images/folder_icon.png" alt="" class="icon">
         <span class="title">lorem</span>
-        <ul></ul>
-      </li>
-      <li class="file">
-        <img src="resources/images/file_icon.png" alt="" class="icon icon-file">
-        <span class="title">ipsum</span>     
+        <ul class="hidden"></ul>
       </li>
     </ul>
   </section>
+  <footer>
+    <button id="appendBtn" onclick="appendFolder()">Append Folder</button>
+    <button onclick="removeElement()">Remove</button>
+  </footer>
 
   <script>
 
-    let files = document.getElementsByClassName("file");
-    for (let i = 0; i < files.length; i++) {
-      files[i].addEventListener("click", selectFile);
+    let folders = document.getElementsByClassName("folder");
+
+    for (let i = 0; i < folders.length; i++) {
+      folders[i].addEventListener("click", selectFile);
     }
 
     function selectFile(event) {
-      console.log(files);
-      files = document.getElementsByClassName("file");
+      
+      folders = document.getElementsByClassName("folder");
       clearAll();
       event.currentTarget.classList.toggle("selected");
+
+      if (document.getElementsByClassName("selected").length > 1) {
+        document.getElementById("appendBtn").disabled = true;
+      } else {
+        document.getElementById("appendBtn").disabled = false;
+      }
+
       event.stopPropagation();
+
     }
     
-    function myFunction(event){
-      console.log(event.currentTarget.parentNode.lastElementChild);
+    function toggleExpand(event){
+
       event.currentTarget.parentNode.lastElementChild.classList.toggle("hidden");
       event.currentTarget.classList.toggle("rotateIn");
       event.stopPropagation();
+
     }
+
     function clearAll() {
+
       if (!event.shiftKey) {
-        for (let i = 0; i < files.length; i++) {
-          files[i].className = files[i].className.replace(" selected", "");
+        for (let i = 0; i < folders.length; i++) {
+          folders[i].className = folders[i].className.replace(" selected", "");
         }
       }
+
+    }
+
+    function appendFolder(){
+
+      let node = document.createElement("li");
+      node.classList.add("folder");
+
+      let arrow = document.createElement("img");
+      arrow.src="resources/images/arrow.png";
+      arrow.classList.add("icon");
+      arrow.addEventListener("click", toggleExpand);
+
+      let folderIcon = document.createElement("img");
+      folderIcon.src="resources/images/folder_icon.png";
+      folderIcon.classList.add("icon");
+      
+      let text = document.createElement("span");
+      text.innerHTML = "lorem";
+      text.classList.add("title");
+      
+      let ul = document.createElement("ul");
+      ul.classList.add("hidden");
+
+      node.appendChild(arrow);
+      node.appendChild(folderIcon);
+      node.appendChild(text);
+      node.appendChild(ul);
+      
+      node.addEventListener("click", selectFile);
+      if (document.getElementsByClassName("selected")[0]) {
+        document.getElementsByClassName("selected")[0].lastElementChild.appendChild(node);
+      } else {
+        document.getElementById("mainlist").appendChild(node);
+      }
+
+    }
+
+    function removeElement() {
+
+      var elements = document.getElementsByClassName("selected");
+      while (elements.length != 0) {
+        elements[0].parentNode.removeChild(elements[0]);
+      }
+      document.getElementById("appendBtn").disabled = false;
+
     }
   </script>
 </body>

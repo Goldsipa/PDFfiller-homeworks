@@ -22,6 +22,12 @@ section {
   background-size: 48px 48px;
   min-height: 432px;
 }
+footer {
+  height: 30px;
+  background: #d5d5d5;
+  text-align: right;
+  padding: 0 20px;
+}
 ul {
   list-style: none;
   margin: 0;
@@ -35,12 +41,14 @@ ul {
   opacity: 0.8;
   float: left;
 }
-.icon-file {
-  margin-left: 26px;
-}
 .selected {
-  background-color: rgb(78, 78, 255);
+  background: url(../images/bg_selected.png);
+  background-repeat: no-repeat;
+  background-size: 100% 24px;
   color: #fff;
+}
+.selected ul {
+  color: #000;
 }
 .hidden {
   display: none;
