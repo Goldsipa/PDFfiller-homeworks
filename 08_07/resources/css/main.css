@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  background-color: #f2f2f2;
+  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  min-width: 992px;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+thead {
+  background: #fc0;
+}
+tbody {
+  background: #fff;
+}
+tfoot {
+  background: silver;
+}
+tr {
+  height: 24px;
+}
+td {
+  padding-left: 4px;
+}
+.left, .right {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  padding: 12px;
+}
+.right table {
+  margin-bottom: 12px;
+}
+.hidden {
+  display: none;
+}
+.collapsible {
+  background-color: rgb(253, 222, 99);
+}
+.active, .collapsible:hover {
+  background-color: #fc0;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 4px;
+}
