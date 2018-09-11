@@ -11,7 +11,7 @@ class App {
 
     this._store.subscribe(this._handleChangeData.bind(this));
     this._store.notifyListeners();
-
+    console.log(this);
     this._bindEventListeners();
   }
 

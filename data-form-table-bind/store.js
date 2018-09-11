@@ -57,7 +57,12 @@ class Store {
     this.notifyListeners();
   }
 
-  unsubscribe() {
-    this._handlers = [];
+  unsubscribe(callback) {
+    for(let i = 0; i < this._handlers.length; i++) {
+      if(callback.name != this._handlers[i].name) continue;
+
+      this._handlers.splice(i, 1);
+      break;
+    }
   }
 }

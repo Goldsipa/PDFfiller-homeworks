@@ -93,7 +93,7 @@
   }
 
   function unsubscribe() {
-    app._store.unsubscribe();
+    app._store.unsubscribe(app._handleChangeData.bind(app));
   }
 
   function subscribe() {
